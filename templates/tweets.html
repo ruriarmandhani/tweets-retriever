@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Tweets Retriever by Ruri Armandhani</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            {% if embed_tweets|length > 0 %}
+            {% for tweet in embed_tweets %}
+            <div class="col-md-4 text-center">
+                <div style="max-width: 400px; height:100%;">
+                    {{tweet.link|safe}}
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <div class="col-md-12 text-center">
+                <h1 style="margin-top: 15%;">
+                    404 <br>
+                    Sorry, Tweet Not Found :(
+                </h1>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/popper.js' %}"></script>
+    <script type="text/javascript" src="{% static 'bootstrap/bootstrap.js' %}"></script>
+</body>
+
+</html>
