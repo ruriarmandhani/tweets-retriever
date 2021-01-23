@@ -10,15 +10,15 @@
 </head>
 
 <body>
-    <div class="container-fluid" style="height: 100vh;">
+    <div class="container-fluid bg-light" style="height: 100vh;">
         <div class="col-md-12">
-            <a href="/" class="btn btn-primary" style="padding:auto; width: 100%; margin-top: 10px; margin-bottom: 10px;"><i class="fa fa-arrow-left"></i>
+            <a href="/" class="btn btn-primary" style="padding:auto; width: 100%; margin-top: 10px; font-size: 20px;"><i class="fa fa-arrow-left"></i>
                 Back to Home</a>
         </div>
         <div class="row">
             {% if embed_tweets|length > 0 %}
             {% for tweet in embed_tweets %}
-            <div class="col-md-4 text-center">
+            <div class="col-md-4 text-center d-flex justify-content-center">
                 <div style="max-width: 400px; height:100%;">
                     {{tweet.link|safe}}
                 </div>

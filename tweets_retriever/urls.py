@@ -20,16 +20,17 @@ from . import retriever
 from . import key
 
 BEARER_TOKEN = key.BEARER_TOKEN
-# BEARER_TOKEN = 'AAAAAAAAAAAAAAAAAAAAAHTVLwEAAAAA9uTM8wUyJ51%2F5Shl4jJKzrkmMy4%3D0PJnluGD2pPGSjU69WpsvDWIky6WMCpmicwaJKkrQZOu7kI7e4'
 
 def tweets_view(request):
-    # username = ['cnbcindonesia', 'KontanNews', 'Bisniscom','detikcom', 'detikfinance']
     username = ['cnbcindonesia','KontanNews', 'Bisniscom','detikcom', 'detikfinance']
+
     query = retriever.get_query(username, request.POST['input'])
+
     api_url = retriever.create_url(query)
+
     tweets = retriever.get_tweets(BEARER_TOKEN,api_url)
     embed_tweets = retriever.embed_tweets(tweets, BEARER_TOKEN)
-    # tweets = "tes"
+    
     data = {
         "embed_tweets":embed_tweets
     }
