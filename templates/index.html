@@ -13,29 +13,23 @@
 <body>
     <div class="container-fluid bg-light" style="height: 100vh;">
         <div class="col-md-8 ml-auto mr-auto text-center h-100">
-            <h1 style="position: relative; top:30%;">Tweets Retriever</h1>
+            <h1 class="text-primary" style="position: relative; top:30%;">Tweets Retriever</h1>
             <form action="{% url 'tweets_view' %}" method="POST" style="position: relative; top:35%;">
                 {% csrf_token %}
-                <input type="text" placeholder="Type stock code" name="search" style="width: 40%;" >
-                <button type="submit" onclick="loadPage()"><i class="fa fa-search"></i></button>
-            </form>
-        </div>
-        
-    </div>
-    
-    <div class="loader-wrapper" id="loader-wrapper">
-        <span class="loader"><span class="loader-inner"></span></span>
-    </div>
+                <div class="col-md-5 mr-auto ml-auto" style="background-color: white; padding: 5px;border-radius: 10px;">
+                    <input id="input" type="text" placeholder="Type stock code" name="input"
+                        style="width: 300px; padding: 5px; border-style:none;" required>
+                    <i class="text-primary fa fa-search" style="font-size: 20px;"></i>
+                </div>
 
+            </form>
+
+        </div>
+
+    </div>
     <script type="text/javascript" src="{% static ' js/jquery.js' %}"></script>
     <script type="text/javascript" src="{% static ' js/popper.js' %}"></script>
     <script type="text/javascript" src="{% static ' bootstrap/bootstrap.js' %}"></script>
-    <script>
-        function loadPage(){
-            document.getElementById('loader-wrapper').style.opacity = 1;
-            document.getElementById('loader-wrapper').style.zIndex = 1;
-        }
-    </script>
 </body>
 
 </html>

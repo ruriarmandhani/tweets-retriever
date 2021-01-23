@@ -17,13 +17,15 @@ from django.contrib import admin
 from django.urls import path
 from django.shortcuts import render, redirect
 from . import retriever
+from . import key
 
-BEARER_TOKEN = 'AAAAAAAAAAAAAAAAAAAAAHTVLwEAAAAA9uTM8wUyJ51%2F5Shl4jJKzrkmMy4%3D0PJnluGD2pPGSjU69WpsvDWIky6WMCpmicwaJKkrQZOu7kI7e4'
+BEARER_TOKEN = key.BEARER_TOKEN
+# BEARER_TOKEN = 'AAAAAAAAAAAAAAAAAAAAAHTVLwEAAAAA9uTM8wUyJ51%2F5Shl4jJKzrkmMy4%3D0PJnluGD2pPGSjU69WpsvDWIky6WMCpmicwaJKkrQZOu7kI7e4'
 
 def tweets_view(request):
     # username = ['cnbcindonesia', 'KontanNews', 'Bisniscom','detikcom', 'detikfinance']
     username = ['cnbcindonesia','KontanNews', 'Bisniscom','detikcom', 'detikfinance']
-    query = retriever.get_query(username, request.POST['search'])
+    query = retriever.get_query(username, request.POST['input'])
     api_url = retriever.create_url(query)
     tweets = retriever.get_tweets(BEARER_TOKEN,api_url)
     embed_tweets = retriever.embed_tweets(tweets, BEARER_TOKEN)
@@ -39,6 +41,6 @@ def index(request):
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index),
+    path('', index, name="index"),
     path('tweets/', tweets_view, name="tweets_view"),
 ]

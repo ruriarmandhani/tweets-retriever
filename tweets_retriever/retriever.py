@@ -17,13 +17,13 @@ def get_query(username, query):
 
 def create_url(query, fields="author_id"):
     # api_url = []
-    start_date = datetime.utcnow().strftime('%Y-%m-%dT00:00:00Z')
-    end_date = datetime.utcnow().strftime('%Y-%m-%dT%H:%M:00Z')
+    # start_date = datetime.utcnow().strftime('%Y-%m-%dT00:00:00Z')
+    # end_date = datetime.utcnow().strftime('%Y-%m-%dT%H:%M:00Z')
     
     tweet_fields = 'tweet.fields={}'.format(fields)
 
-    api_url = [ ('https://api.twitter.com/2/tweets/search/recent?query={}&{}&start_time={}&end_time={}'.format(q, tweet_fields, start_date, end_date)) for q in query]
-
+    # api_url = [ ('https://api.twitter.com/2/tweets/search/recent?query={}&{}&start_time={}&end_time={}'.format(q, tweet_fields, start_date, end_date)) for q in query]
+    api_url = [ ('https://api.twitter.com/2/tweets/search/recent?query={}&{}'.format(q, tweet_fields)) for q in query]
     # for q in query:
     #     api_url.append(
     #         'https://api.twitter.com/2/tweets/search/recent?query={}&{}&start_time={}&end_time={}'.format(q, tweet_fields, start_date, end_date))
@@ -47,11 +47,13 @@ def get_tweets(bearer_token, api_url):
 
         tweets = json.loads(tweets_json)
 
+        publisher = re.findall(r"\w+", url)[10]
+
         try:
             for tweet in tweets['data']:
-                tweet_id.append({'id':tweet['id'], 'publisher':re.findall(r"\w+", url)[10]})
+                tweet_id.append({'id':tweet['id'], 'publisher':publisher})
         except:
-            print('no tweets')
+            print('No tweets from ' + publisher)
     # print(tweet_id)
     return tweet_id
 

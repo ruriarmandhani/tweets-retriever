@@ -10,7 +10,11 @@
 </head>
 
 <body>
-    <div class="container-fluid">
+    <div class="container-fluid" style="height: 100vh;">
+        <div class="col-md-12">
+            <a href="/" class="btn btn-primary" style="padding:auto; width: 100%; margin-top: 10px; margin-bottom: 10px;"><i class="fa fa-arrow-left"></i>
+                Back to Home</a>
+        </div>
         <div class="row">
             {% if embed_tweets|length > 0 %}
             {% for tweet in embed_tweets %}
