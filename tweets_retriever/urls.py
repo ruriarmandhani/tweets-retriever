@@ -16,25 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.shortcuts import render
-
 from . import retriever
 
 import time
-# from . import key
-
-# BEARER_TOKEN = key.BEARER_TOKEN
 
 def tweets_view(request):
-    # username = ['cnbcindonesia','KontanNews', 'Bisniscom','detikcom', 'detikfinance']
-
-    # query = retriever.get_query(username, request.POST['keyword'])
-
-    # api_url = retriever.create_url(query)
-
-    # tweets = retriever.get_tweets(BEARER_TOKEN,api_url)
-    # embed_tweets = retriever.embed_tweets(tweets, BEARER_TOKEN)
     start_time = time.time()
-    # username = ['cnbcindonesia', 'KontanNews','Bisniscom', 'detikcom', 'detikfinance']
     username = request.POST['username'].split(',')
     keyword = request.POST['keyword']
     query = retriever.get_query(username, keyword)

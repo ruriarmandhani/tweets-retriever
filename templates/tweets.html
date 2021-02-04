@@ -10,14 +10,14 @@
     <title>Tweets Retriever by Ruri Armandhani</title>
 </head>
 
-<body style="height:100vh; overflow: hidden;">
-    <div class="container-fluid bg-light" style="height: 100vh;">
+<body style="height:100vh; ">
+    <div class="container-fluid bg-light" style="height: 100vh; overflow: auto;">
         <a href="/" class="btn btn-primary" style="width: 100%; margin-top: 10px; font-size: 20px;"><i
                 class="fa fa-arrow-left"></i>
             Back to Home</a>
         <div class="row" style="height: 100vh;">
             {% if embed_tweets|length > 0 %}
-            <div class="col-md-12" style="overflow-y: auto; height: 545px;">
+            <div class="col-md-12">
                 <div class="row">
                     {% for tweet in embed_tweets %}
                     <div class="col-md-4 text-center d-flex justify-content-center">

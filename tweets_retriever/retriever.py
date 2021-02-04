@@ -18,7 +18,6 @@ def get_query(username, query):
 def create_url(query, fields="author_id"):
     tweet_fields = 'tweet.fields={}'.format(fields)
     api_url = [('https://api.twitter.com/2/tweets/search/recent?query={}&{}'.format(q,tweet_fields)) for q in query]
-    print (api_url)
     return api_url
 
 def get_tweets(api_url):
