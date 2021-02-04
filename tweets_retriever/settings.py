@@ -69,7 +69,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'tweets_retriever.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 

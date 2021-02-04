@@ -15,25 +15,36 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from django.shortcuts import render, redirect
-from . import retriever
-from . import key
+from django.shortcuts import render
 
-BEARER_TOKEN = key.BEARER_TOKEN
+from . import retriever
+
+import time
+# from . import key
+
+# BEARER_TOKEN = key.BEARER_TOKEN
 
 def tweets_view(request):
-    username = ['cnbcindonesia','KontanNews', 'Bisniscom','detikcom', 'detikfinance']
+    # username = ['cnbcindonesia','KontanNews', 'Bisniscom','detikcom', 'detikfinance']
 
-    query = retriever.get_query(username, request.POST['input'])
+    # query = retriever.get_query(username, request.POST['keyword'])
 
+    # api_url = retriever.create_url(query)
+
+    # tweets = retriever.get_tweets(BEARER_TOKEN,api_url)
+    # embed_tweets = retriever.embed_tweets(tweets, BEARER_TOKEN)
+    start_time = time.time()
+    # username = ['cnbcindonesia', 'KontanNews','Bisniscom', 'detikcom', 'detikfinance']
+    username = request.POST['username'].split(',')
+    keyword = request.POST['keyword']
+    query = retriever.get_query(username, keyword)
     api_url = retriever.create_url(query)
-
-    tweets = retriever.get_tweets(BEARER_TOKEN,api_url)
-    embed_tweets = retriever.embed_tweets(tweets, BEARER_TOKEN)
-    
+    embedded_tweets = retriever.get_embedded_tweets(api_url)
     data = {
-        "embed_tweets":embed_tweets
+        "embed_tweets":embedded_tweets
     }
+    end_time = time.time()
+    print(end_time-start_time)
     # print(data)
     return render(request, 'tweets.html', data)
 

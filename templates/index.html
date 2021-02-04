@@ -7,26 +7,29 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Tweets Retriever by Ruri Armandhani</title>
+    <title>Tweet Stream by Ruri Armandhani</title>
 </head>
 
 <body>
     <div class="container-fluid bg-light" style="height: 100vh;">
         <div class="col-md-8 ml-auto mr-auto text-center h-100">
-            <h1 class="text-primary" style="position: relative; top:30%;">Tweets Retriever</h1>
+            <h1 class="text-primary" style="position: relative; top:32%;">Tweets Retriever</h1>
             <form action="{% url 'tweets_view' %}" method="POST" style="position: relative; top:35%;">
                 {% csrf_token %}
-                <div class="col-md-5 mr-auto ml-auto" style="background-color: white; padding: 5px;border-radius: 10px;">
-                    <input id="input" type="text" placeholder="Type stock code" name="input"
-                        style="width: 300px; padding: 5px; border-style:none;" required>
-                    <i class="text-primary fa fa-search" style="font-size: 20px;"></i>
+                <div class="col-md-8 mr-auto ml-auto text-left"
+                    style="background-color: white; padding: 10px;border-radius: 10px;">
+                    <input id="username" type="text" placeholder="Username (example: cnbcindonesia,detikcom,Bisniscom)" name="username"
+                        style=" width: 90%; padding: 5px; height: 25px; margin-bottom: 5px; border-style: none;" >
+                    <i class="text-primary fa fa-user" style="font-size: 22px; "></i>
+                    <input id="keyword" type="text" placeholder="Keyword" name="keyword"
+                        style=" width: 90%; padding: 5px; height: 25px; border-style: none;" required>
+                    <i class="text-primary fa fa-search" style="font-size: 22px;"></i>
+                    <input type="submit" value="submit" hidden/>
                 </div>
-
             </form>
-
         </div>
-
     </div>
+
     <script type="text/javascript" src="{% static ' js/jquery.js' %}"></script>
     <script type="text/javascript" src="{% static ' js/popper.js' %}"></script>
     <script type="text/javascript" src="{% static ' bootstrap/bootstrap.js' %}"></script>

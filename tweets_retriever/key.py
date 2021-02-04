@@ -1,1 +1,1 @@
-BEARER_TOKEN = 'your bearer token key'
+BEARER_TOKEN = 'your bearer token'

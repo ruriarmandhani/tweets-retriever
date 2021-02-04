@@ -4,26 +4,30 @@
 
 <head>
     <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Tweets Retriever by Ruri Armandhani</title>
 </head>
 
-<body>
+<body style="height:100vh; overflow: hidden;">
     <div class="container-fluid bg-light" style="height: 100vh;">
-        <div class="col-md-12">
-            <a href="/" class="btn btn-primary" style="padding:auto; width: 100%; margin-top: 10px; font-size: 20px;"><i class="fa fa-arrow-left"></i>
-                Back to Home</a>
-        </div>
-        <div class="row">
+        <a href="/" class="btn btn-primary" style="width: 100%; margin-top: 10px; font-size: 20px;"><i
+                class="fa fa-arrow-left"></i>
+            Back to Home</a>
+        <div class="row" style="height: 100vh;">
             {% if embed_tweets|length > 0 %}
-            {% for tweet in embed_tweets %}
-            <div class="col-md-4 text-center d-flex justify-content-center">
-                <div style="max-width: 400px; height:100%;">
-                    {{tweet.link|safe}}
+            <div class="col-md-12" style="overflow-y: auto; height: 545px;">
+                <div class="row">
+                    {% for tweet in embed_tweets %}
+                    <div class="col-md-4 text-center d-flex justify-content-center">
+                        <div style="max-width: 400px; height:100%;">
+                            {{tweet.html|safe}}
+                        </div>
+                    </div>
+                    {% endfor %}
                 </div>
             </div>
-            {% endfor %}
             {% else %}
             <div class="col-md-12 text-center">
                 <h1 style="margin-top: 15%;">
@@ -34,7 +38,11 @@
             {% endif %}
         </div>
     </div>
-
+    <script>
+        twttr.widgets.load(
+            document.getElementById("stream")
+        );
+    </script>
     <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/popper.js' %}"></script>
     <script type="text/javascript" src="{% static 'bootstrap/bootstrap.js' %}"></script>
