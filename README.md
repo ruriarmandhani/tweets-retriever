@@ -1,2 +1,2 @@
-# tweets-retriever
-Search and retrieve embedded tweets from Twitter API using Django
+# Tweets Retriever
+Search recent tweets from Twitter using Django and Twitter API v2.
