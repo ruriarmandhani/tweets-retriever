@@ -22,14 +22,26 @@
                         style=" width: 92%; padding: 5px; height: 25px; margin-bottom: 5px; border-style: none;" >
                     <i class="text-primary fa fa-user" style="font-size: 22px; margin-left: 10px;"></i>
                     <input id="keyword" type="text" placeholder="Keyword" name="keyword"
-                        style=" width: 92%; padding: 5px; height: 25px; border-style: none;" required>
+                        style=" width: 92%; padding: 5px; height: 25px; border-style: none;">
                     <i class="text-primary fa fa-search" style="font-size: 22px; margin-left: 10px;"></i>
-                    <input type="submit" value="submit" hidden/>
+                    <button type="submit" value="submit" onclick="validate_submit(event)" hidden></button>
                 </div>
             </form>
         </div>
     </div>
-
+    <script>
+        function validate_submit(event){
+            var username = document.getElementById('username').value;
+            var keyword = document.getElementById('keyword').value;
+            if (username == "" && keyword == ""){
+                event.preventDefault();
+            }
+            else{
+                username.required = True;
+                keyword.required = True;
+            }
+        }
+    </script>
     <script type="text/javascript" src="{% static ' js/jquery.js' %}"></script>
     <script type="text/javascript" src="{% static ' js/popper.js' %}"></script>
     <script type="text/javascript" src="{% static ' bootstrap/bootstrap.js' %}"></script>
